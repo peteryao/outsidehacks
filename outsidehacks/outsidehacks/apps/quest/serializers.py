@@ -31,7 +31,7 @@ class QuestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Quest
-        fields = ('id', 'name', 'cateogry', 'description', 'image', 'points_awarded', 'zone', 'owner', )
+        fields = ('id', 'name', 'category', 'description', 'image', 'points_awarded', 'zone', 'owner', )
 
 class UserQuestSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')

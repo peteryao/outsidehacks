@@ -42,39 +42,23 @@ angular.module('starter.controllers', [])
 })
 
 .controller('CatsCtrl', function($scope, $http) {
- $http.get('http://45.55.21.17:8000/zones/.json').
+ $http.get('http://127.0.0.1:8000/category/?format=json').
       success(function(data) {
-          $scope.greeting = data;
-          console.log($scope.greeting);
+          $scope.categories = data.results;
       });
-  $scope.categories = [
-    { title: 'Food', id: 1 },
-    { title: 'Music', id: 2 },
-    { title: 'Friendship', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Solo', id: 5 },
-    { title: 'Yolo', id: 6 }
-  ];
 })
 
-.controller('oneCatCtrl', function($scope, $stateParams) {
- categories = [
-    { title: 'Food', id: 1 },
-    { title: 'Music', id: 2 },
-    { title: 'Friendship', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Solo', id: 5 },
-    { title: 'Yolo', id: 6 }
-  ];
-  $scope.quests = [
-    { title: 'quest 1', id: 1 },
-    { title: 'quest 2', id: 2 },
-    { title: 'quest 3', id: 3 },
-    { title: 'quest 4', id: 4 },
-    { title: 'quest 5', id: 5 },
-    { title: 'quest 6', id: 6 }
-  ]
-  $scope.category = categories[$stateParams.categoryId-1];
+.controller('oneCatCtrl', function($scope, $http, $stateParams) {
+  $http.get('http://127.0.0.1:8000/category/' + $stateParams.categoryId + '/?format=json').
+      success(function(data) {
+          $scope.category = data;
+          console.log[data];
+      });
+  $http.get('http://127.0.0.1:8000/quests/?format=json').
+      success(function(res) {
+          $scope.quests = res.results;
+          console.log(res.results);
+      });
 })
 
 .controller('QuestCtrl', function($scope, $stateParams) {

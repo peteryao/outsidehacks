@@ -38,6 +38,9 @@ class Cateogry(TimeStampedModel):
 
     owner = models.ForeignKey('auth.User', related_name='quests_category')
 
+    def __unicode__(self):
+        return self.name
+
 class Quest(TimeStampedModel):
     name = models.CharField(max_length=100)
     category = models.ForeignKey(Cateogry)
