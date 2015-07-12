@@ -31,8 +31,16 @@ class Badge(TimeStampedModel):
 
     owner = models.ForeignKey('auth.User', related_name='badges')
 
+class Cateogry(TimeStampedModel):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000)
+    image = models.ImageField()
+
+    owner = models.ForeignKey('auth.User', related_name='quests_category')
+
 class Quest(TimeStampedModel):
     name = models.CharField(max_length=100)
+    category = models.ForeignKey(Cateogry)
     description = models.CharField(max_length=1000)
     image = models.ImageField()
     points_awarded = models.IntegerField()

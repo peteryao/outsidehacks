@@ -21,6 +21,22 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=100)),
                 ('description', models.CharField(max_length=1000)),
                 ('image', models.ImageField(upload_to=b'')),
+                ('owner', models.ForeignKey(related_name='badges', to=settings.AUTH_USER_MODEL)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='Cateogry',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('created', models.DateTimeField(auto_now_add=True)),
+                ('modified', models.DateTimeField(auto_now=True)),
+                ('name', models.CharField(max_length=100)),
+                ('description', models.CharField(max_length=1000)),
+                ('image', models.ImageField(upload_to=b'')),
+                ('owner', models.ForeignKey(related_name='quests_category', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'abstract': False,
@@ -36,6 +52,8 @@ class Migration(migrations.Migration):
                 ('description', models.CharField(max_length=1000)),
                 ('image', models.ImageField(upload_to=b'')),
                 ('points_awarded', models.IntegerField()),
+                ('category', models.ForeignKey(to='quest.Cateogry')),
+                ('owner', models.ForeignKey(related_name='quests', to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'abstract': False,
@@ -47,7 +65,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
-                ('Badge', models.ForeignKey(to='quest.Badge')),
+                ('badge', models.ForeignKey(to='quest.Badge')),
+                ('owner', models.ForeignKey(related_name='user_badges', to=settings.AUTH_USER_MODEL)),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
             options={
@@ -61,6 +80,7 @@ class Migration(migrations.Migration):
                 ('created', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
                 ('completed', models.BooleanField(default=False)),
+                ('owner', models.ForeignKey(related_name='user_quests', to=settings.AUTH_USER_MODEL)),
                 ('quest', models.ForeignKey(to='quest.Quest')),
                 ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
@@ -81,6 +101,9 @@ class Migration(migrations.Migration):
                 ('time_end', models.DateTimeField(null=True, blank=True)),
                 ('owner', models.ForeignKey(related_name='zones', to=settings.AUTH_USER_MODEL)),
             ],
+            options={
+                'abstract': False,
+            },
         ),
         migrations.AddField(
             model_name='quest',

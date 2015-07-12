@@ -36,6 +36,15 @@ class BadgeViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Cateogry.objects.all()
+    serializer_class = CateogrySerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly,)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
 class QuestViewSet(viewsets.ModelViewSet):
     queryset = Quest.objects.all()
     serializer_class = QuestSerializer
