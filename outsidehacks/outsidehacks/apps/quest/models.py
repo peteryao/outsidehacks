@@ -24,10 +24,18 @@ class Zone(TimeStampedModel):
     class Meta:
         pass
 
+    def __unicode__(self):
+        return self.name
+
 class Badge(TimeStampedModel):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
     image = models.ImageField()
+
+    owner = models.ForeignKey('auth.User', related_name='badges')
+
+    class Meta:
+        pass
 
 class Quest(TimeStampedModel):
     name = models.CharField(max_length=100)
