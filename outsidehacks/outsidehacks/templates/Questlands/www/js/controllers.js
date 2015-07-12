@@ -49,15 +49,13 @@ angular.module('starter.controllers', [])
 })
 
 .controller('oneCatCtrl', function($scope, $http, $stateParams) {
-  $http.get('http://127.0.0.1:8000/category/' + $stateParams.categoryId + '/?format=json').
-      success(function(data) {
+  var category_info = 'http://127.0.0.1:8000/category/' + $stateParams.categoryId + '/?format=json';
+  $http.get(category_info).success(function(data) {
           $scope.category = data;
-          console.log[data];
       });
   $http.get('http://127.0.0.1:8000/quests/?format=json').
       success(function(res) {
           $scope.quests = res.results;
-          console.log(res.results);
       });
 })
 

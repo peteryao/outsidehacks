@@ -1,4 +1,5 @@
-<ion-view view-title="{{category.name}}">
+<ion-view>
+<ion-nav-title>{{category.name}}</ion-nav-title>
   <ion-content>
     <ion-item>
       <ion-item ng-repeat="quest in quests" href="#/app/quest/{{quest.id}}" ng-if="quest.category==category.id">
