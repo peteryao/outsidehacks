@@ -19,6 +19,11 @@ class Zone(TimeStampedModel):
     time_start = models.DateTimeField(blank=True, null=True)
     time_end = models.DateTimeField(blank=True, null=True)
 
+    owner = models.ForeignKey('auth.User', related_name='zones')
+
+    class Meta:
+        pass
+
 class Badge(TimeStampedModel):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
