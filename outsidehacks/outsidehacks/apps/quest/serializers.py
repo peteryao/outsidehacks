@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
-from .models import Zone, Badge, Quest, UserQuest
+from .models import Zone, Badge, Quest, UserQuest, UserBadge
 
 class ZoneSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -32,6 +32,13 @@ class UserQuestSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserQuest
         fields = ('id', 'user', 'quest', 'completed', 'owner', )
+
+class UserBadgeSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = UserBadge
+        fields = ('id', 'user', 'badge', 'owner', )
 
 
 class UserSerializer(serializers.ModelSerializer):

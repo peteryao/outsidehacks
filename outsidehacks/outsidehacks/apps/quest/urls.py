@@ -9,6 +9,7 @@ router.register(r'users', views.UserViewSet)
 router.register(r'badges', views.BadgeViewSet)
 router.register(r'quests', views.QuestViewSet)
 router.register(r'user_quests', views.UserQuestViewSet)
+router.register(r'user_badges', views.UserBadgeViewSet)
 
 # The API URLs are now determined automatically by the router.
 # Additionally, we include the login URLs for the browsable API.

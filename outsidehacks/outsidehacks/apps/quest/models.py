@@ -49,4 +49,6 @@ class UserQuest(TimeStampedModel):
 
 class UserBadge(TimeStampedModel):
     user = models.ForeignKey(User)
-    Badge = models.ForeignKey(Badge)
+    badge = models.ForeignKey(Badge)
+
+    owner = models.ForeignKey('auth.User', related_name='user_badges')
