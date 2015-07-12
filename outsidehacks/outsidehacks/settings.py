@@ -43,6 +43,7 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
+    'outsidehacks.apps.core',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -59,6 +60,22 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'outsidehacks.urls'
 
 WSGI_APPLICATION = 'outsidehacks.wsgi.application'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(project('outsidehacks/templates'))],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 
 # Database
