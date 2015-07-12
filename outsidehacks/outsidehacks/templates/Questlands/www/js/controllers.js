@@ -59,6 +59,10 @@ angular.module('starter.controllers', [])
       });
 })
 
-.controller('QuestCtrl', function($scope, $stateParams) {
-  console.log($stateParams)
+.controller('QuestCtrl', function($scope, $http, $stateParams) {
+  var quest_info = 'http://127.0.0.1:8000/quests/' + $stateParams.questId + '/?format=json';
+  console.log(quest_info);
+  $http.get(quest_info).success(function(data) {
+          $scope.quest = data;
+      });
 });

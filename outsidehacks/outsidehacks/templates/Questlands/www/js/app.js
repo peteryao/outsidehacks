@@ -57,6 +57,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     })
 
+  .state('app.quest_detail', {
+    url: "/quest/:questId",
+    views: {
+      'menuContent' : {
+        templateUrl: 'templates/quest_detail.html',
+        controller: 'QuestCtrl'
+      }
+    }
+  })
+
   .state('app.category', {
     url: "/categories/:categoryId",
     views: {
@@ -65,16 +75,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
         controller: 'oneCatCtrl'
       }
     }
-
-    // .state('app.quest_detail',{
-    //   url: "/quests/:questId",
-    //   views: {
-    //     'menuContent': {
-    //       templateUrl: "templates/quest_detail.html",
-    //       controller: "QuestCtrl"
-    //     }
-    //   }
-    // })
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/search');

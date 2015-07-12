@@ -1,9 +1,35 @@
-<ion-view view-title="{{category.title}}">
+<ion-view>
+<ion-nav-title>Quest Info</ion-nav-title>
   <ion-content>
-    <ion-item>
-      <ion-item ng-repeat="quest in quests" href="#/app/quest/{{quest.id}}">
-        {{quest.title}}
-      </ion-item>
-    </ion-item>
+    <div class="list card">
+
+  <div class="item">
+    <h2>{{quest.name}}</h2>
+    <p>{{quest.created}}</p>
+  </div>
+
+  <div class="item item-body">
+    <img class="full-image" src="{{quest.image}}" height="250" width="250">
+    <p>
+      {{quest.description}}
+    </p>
+  </div>
+
+  <div class="item tabs tabs-secondary tabs-icon-left">
+    <a class="tab-item" href="#">
+      <i class="icon ion-thumbsup"></i>
+      Like
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-chatbox"></i>
+      Comment
+    </a>
+    <a class="tab-item" href="#">
+      <i class="icon ion-share"></i>
+      Share
+    </a>
+  </div>
+
+</div>
   </ion-content>
 </ion-view>
