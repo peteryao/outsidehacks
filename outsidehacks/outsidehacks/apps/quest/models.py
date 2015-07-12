@@ -45,6 +45,8 @@ class UserQuest(TimeStampedModel):
     quest = models.ForeignKey(Quest)
     completed = models.BooleanField(default=False)
 
+    owner = models.ForeignKey('auth.User', related_name='user_quests')
+
 class UserBadge(TimeStampedModel):
     user = models.ForeignKey(User)
     Badge = models.ForeignKey(Badge)
