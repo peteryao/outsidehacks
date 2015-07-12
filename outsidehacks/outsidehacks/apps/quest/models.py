@@ -1,6 +1,5 @@
 # SYSTEM DEPENDENCIES
 from datetime import datetime, timedelta, time, date
-import requests
 
 # DJANGO DEPENDENCIES
 from django.db import models
@@ -17,9 +16,26 @@ class Zone(TimeStampedModel):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
     image = models.ImageField()
+    time_start = models.DateTimeField(blank=True, null=True)
+    time_end = models.DateTimeField(blank=True, null=True)
+
+class Badge(TimeStampedModel):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000)
+    image = models.ImageField()
 
 class Quest(TimeStampedModel):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
     image = models.ImageField()
     points_awarded = models.IntegerField()
+    zone = models.ForeignKey(Zone)
+
+class UserQuest(TimeStampedModel):
+    user = models.ForeignKey(User)
+    quest = models.ForeignKey(Quest)
+    completed = models.BooleanField(default=False)
+
+class UserBadge(TimeStampedModel):
+    user = models.ForeignKey(User)
+    Badge = models.ForeignKey(Badge)

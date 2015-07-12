@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     'outsidehacks.apps.core',
+    'outsidehacks.apps.quest',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

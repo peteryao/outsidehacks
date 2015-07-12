@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Zone, Badge, Quest, UserQuest, UserBadge
+
+admin.site.register(Zone)
+admin.site.register(Badge)
+admin.site.register(Quest)
+admin.site.register(UserQuest)
+admin.site.register(UserBadge)
