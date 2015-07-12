@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
-from .models import Zone, Badge
+from .models import Zone, Badge, Quest
 
 class ZoneSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
@@ -19,6 +19,12 @@ class BadgeSerializer(serializers.ModelSerializer):
         model = Badge
         fields = ('id', 'name', 'description', 'image', 'owner', )
 
+class QuestSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
+    class Meta:
+        model = Quest
+        fields = ('id', 'name', 'description', 'image', 'points_awarded', 'zone', 'owner', )
 
 class UserSerializer(serializers.ModelSerializer):
     zones = serializers.HyperlinkedRelatedField(many=True, view_name='zone-detail', read_only=True)
