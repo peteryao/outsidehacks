@@ -1,0 +1,9 @@
+<ion-view view-title="{{category.title}}">
+  <ion-content>
+    <ion-item>
+      <ion-item ng-repeat="quest in quests" href="#/app/quest/{{quest.id}}">
+        {{quest.title}}
+      </ion-item>
+    </ion-item>
+  </ion-content>
+</ion-view>
